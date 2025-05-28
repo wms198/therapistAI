@@ -1,0 +1,17 @@
+meta {
+  name: change appointment
+  type: http
+  seq: 3
+}
+
+patch {
+  url: http://127.0.0.1:8000/appointment/6
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "start_at": "2027-11-10T21:00Z"
+  }
+}
