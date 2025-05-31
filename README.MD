@@ -1,5 +1,8 @@
-### run the code
+### run backend code
 fastapi dev main.py
+
+### run front end 
+npm start 
 
 ### LLM
 Using llama
@@ -28,3 +31,6 @@ https://sqlmodel.tiangolo.com/tutorial/fastapi/session-with-dependency/#use-the-
 
 ### CORS
 https://fastapi.tiangolo.com/az/tutorial/cors/
+
+### create react with TS
+npx create-react-app my-app --template typescript
