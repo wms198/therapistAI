@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+
   return (
 <div className="container-fluid">
     <div className="row flex-nowrap">
@@ -75,9 +76,13 @@ function App() {
             shdfkshjkjfhsdjfhsjkhfdjkshfjkshfjksdjfhjkshf
             fdhshfkdjhfkjdhfjkshfjkdshfjkdshfkjhsdfjsfjlksjflksdjfksjfksjfkljsfkldsjfkljslkfjdklfjs
           </p>
-          <div className="input-group ">
+          <div className="input-group position-relative">
             <textarea className="form-control custom-control" rows={4} cols={72}> </textarea>
-            <span className="input-group-addon btn btn-primary d-flex align-items-center">↑</span>
+            <div className="position-absolute d-flex justify-content-end fixed-bottom">
+              <button  className="btn btn-primary" >↑</button>
+              
+               {/* input-group-addon */}
+            </div>
           </div>
         </div>
     </div>
