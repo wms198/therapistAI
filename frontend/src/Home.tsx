@@ -1,44 +1,103 @@
+import { useState, useEffect } from 'react';
 import useFetch from "./UseFetch";
-import {AIResponse} from "./types"
+import { UserMessage } from "./types";
+import User from "./User";
 
 const Home: React.FC = () => {
-    const { error, isPending, data} = useFetch<AIResponse>('http://localhost:8080/')
+    const [response, setResponse] = useState("");
     const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    const target = e.target as typeof e.target & {
-            textArea: { value: string };
+        e.preventDefault();
+        const target = e.target as typeof e.target & {
+        textArea: { value: string };
+        };
+        const userContent = target.textArea.value;
+        target.textArea.value = ""
+        console.log(userContent);
+        sendToLLM(userContent);
+  };
+    const sendToLLM = (userContent: string) => {
+        let location: string;
+        let method: string;
+        let body: string;
+        location = "http://localhost:8000/message/";
+        method = "POST";
+        body = JSON.stringify({ content: userContent });
+        fetch(location, {
+            credentials: "include",
+            method: method,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: body,
+        })
+        .then((response) => {
+            interface FetchData {
+            status: number;
+            ok: boolean;
+            json: {content: string}[];
             }
-    const textArea = target.textArea.value;
-    console.log(textArea)
-    }
 
-    return(
-        <div className="py-3 mx-auto row" style={{ width: "50%" }}>
-          <div className="col align-self-center">
-            <p className="lead text-center" id="therapist">Hi. I'm here.</p>
-            {/* <div className="input-group position-relative"> */}
-            <div className="d-flex flex-column">
-              <form onSubmit={handleSubmit} >
-                <textarea
-                  className="form-control custom-control"
-                  rows={4}
-                  cols={72}
-                  id='textArea'
-                >
-                </textarea>
-                <button
-                  className="btn btn-primary"
-                  style={{ width: "100%", marginTop: "24px" }}
-                >
-                  send
-                </button>
-              </form>
-              {/* <div className="position-absolute d-flex justify-content-end fixed-bottom">
-              <button  className="btn btn-primary" style={{width: '100%'}} >↑</button>
-            </div> */}
-            </div>
-          </div>
+        return new Promise<FetchData>((resolve) =>
+            response.json().then((json) =>
+                resolve({
+                status: response.status,
+                ok: response.ok,
+                json: json,
+                })
+            )
+            );
+        })
+        .then(({ status, json, ok }) => {
+            console.log("data/json:", json);
+            console.log("status", status);
+            console.log("ok:", ok);
+            if(status == 200 && json.length > 1){
+                if(json !== undefined)
+                setResponse(json[1].content)
+            }
+        })
+        .catch((error) => console.log("error:", error));
+    };
+
+  return (
+    <div className="py-3 mx-auto row" style={{ width: "50%" }}>
+      <div className="col align-self-center">
+        <p className={response ? "lead" : "lead text-center"} id="therapist">
+          {response ? response: "Hi. I'm here." }
+        </p>
+        {/* <div className="input-group position-relative"> */}
+        <div className="d-flex flex-column">
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className="form-control custom-control"
+              rows={4}
+              cols={72}
+              id="textArea"
+            ></textarea>
+            <button
+              className="btn btn-primary"
+              style={{ width: "100%", marginTop: "24px" }}
+            >
+              send
+            </button>
+          </form>
+          {/* <div className="position-absolute d-flex justify-content-end fixed-bottom">
+            <button  className="btn btn-primary" style={{width: '100%'}} >↑</button>
+        </div> */}
         </div>
-    );
-}
-export default Home
+      </div>
+    </div>
+  );
+};
+
+// const { error, isPending, data: messages} = useFetch<UserMessage>('http://127.0.0.1:8000/')
+
+// return(
+//     <div>
+//         { error && <div>{ error }</div> }
+//         { isPending && <div>Loading...</div> }
+//         { messages && <User messages={messages} />}
+//   </div>
+// );
+// }
+export default Home;

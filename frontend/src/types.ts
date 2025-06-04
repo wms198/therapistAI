@@ -1,3 +1,3 @@
-export interface AIResponse {
-    AIResponse: string
+export interface UserMessage {
+    Message: string
 }
