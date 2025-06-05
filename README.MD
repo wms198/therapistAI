@@ -37,3 +37,9 @@ npx create-react-app my-app --template typescript
 
 ### datetime react
 npm install --save react-datetime
+
+#### React Scheduler - Add Appointments
+https://js.devexpress.com/React/Documentation/Guide/UI_Components/Scheduler/Appointments/Add_Appointments/
+
+### Appointment Management System using React
+https://www.geeksforgeeks.org/appointment-management-system-using-react/
