@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import useFetch from "./UseFetch";
-import { UserMessage } from "./types";
-import User from "./User";
 
 const Home: React.FC = () => {
     const [response, setResponse] = useState("");
@@ -81,23 +79,9 @@ const Home: React.FC = () => {
               send
             </button>
           </form>
-          {/* <div className="position-absolute d-flex justify-content-end fixed-bottom">
-            <button  className="btn btn-primary" style={{width: '100%'}} >↑</button>
-        </div> */}
         </div>
       </div>
     </div>
   );
 };
-
-// const { error, isPending, data: messages} = useFetch<UserMessage>('http://127.0.0.1:8000/')
-
-// return(
-//     <div>
-//         { error && <div>{ error }</div> }
-//         { isPending && <div>Loading...</div> }
-//         { messages && <User messages={messages} />}
-//   </div>
-// );
-// }
 export default Home;

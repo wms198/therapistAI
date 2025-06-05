@@ -11,19 +11,6 @@ const AppointmentList = ({appointments}: Props) => {
                 <li>{appointment.start_at}</li>
             ))}
         </ul>
-    //     <a
-    //         href="#submenu1"
-    //         data-bs-toggle="collapse"
-    //         className="nav-link px-0 align-middle"
-    //         >
-    //         <i className="fs-4 bi-speedometer2"></i>{" "}
-    //         <span className="ms-1 d-none d-sm-inline">Hahahaha</span>{" "}
-    //         </a>
-    //         <ul
-    //         className="collapse show nav flex-column ms-1"
-    //         id="submenu1"
-    //         data-bs-parent="#menu"
-    //         ></ul>
     );
 };
 export default AppointmentList;
