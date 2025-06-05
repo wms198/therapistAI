@@ -54,33 +54,7 @@ textarea {
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
-}
-
-inputasdasd[type="submit"] {
-  background-color: #04aa6d;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 2rem;
-}
-
-/* button {
-	background-color: #04AA6D;
-	color: white;
-	padding: 12px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	margin-top: 1rem;
-	margin-right: 1rem;
-} */
-
-button:hover,
-[type="submit"]:hover {
-  background-color: #45a049;
-}
+} 
 
 .container {
   width: 60%;
@@ -90,66 +64,11 @@ button:hover,
   padding: 20px;
 }
 
-/* h1 {
-	text-align: center;
-	color: green;
-} */
-
-/* .col-25 {
-	float: left;
-	width: 25%;
-	margin-top: 6px;
-} */
-
-/* .col-75 {
-	float: left;
-	width: 75%;
-	margin-top: 6px;
-} */
-
 .row::after {
   content: "";
   display: table;
   clear: both;
 }
-
-/* #list {
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-#list td,
-#list th {
-	border: 1px solid #ddd;
-	padding: 8px;
-}
-
-#list tr:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-#list tr:hover {
-	background-color: #ddd;
-}
-
-#list th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #04AA6D;
-	color: white;
-} */
-
-/* @media screen and (max-width: 600px) {
-
-	.col-25,
-	.col-75,
-	input[type=submit] {
-		width: 100%;
-		margin-top: 0;
-	}
-} */
 .appointment-form {
   background-color: transparent;
   transition: background-color 0.5s;
@@ -167,4 +86,18 @@ button:hover,
 .appointment-form:focus-within form *,
 .appointment-form:hover form * {
   opacity: 1;
+}
+
+.appoinments li {
+  animation: fadeIn 1.8s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
