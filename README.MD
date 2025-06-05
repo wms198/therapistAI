@@ -34,3 +34,6 @@ https://fastapi.tiangolo.com/az/tutorial/cors/
 
 ### create react with TS
 npx create-react-app my-app --template typescript
+
+### datetime react
+npm install --save react-datetime
