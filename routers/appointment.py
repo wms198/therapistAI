@@ -17,16 +17,16 @@ async def create_appointment(appointment_req:AppointmentRequest, session: Sessio
     session.refresh(a_datetime)
     return a_datetime
 
-@router.get("/appointment/", tags=["appointment"])
-async def getLatest_appointment(session: Session = Depends(get_session)):
-    query = select(Appointment).order_by(Appointment.id.desc())
-    details_of_appointment = session.exec(query).first()
-    return details_of_appointment
+# @router.get("/appointment/", tags=["appointment"])
+# async def getLatest_appointment(session: Session = Depends(get_session)):
+#     query = select(Appointment).order_by(Appointment.id.desc())
+#     details_of_appointment = session.exec(query).first()
+#     return details_of_appointment
 
-@router.get("/appointment/all", tags=["appointment"])
+@router.get("/appointment/", tags=["appointment"])
 async def getAll_appointments(session: Session = Depends(get_session)):
     # https://www.geeksforgeeks.org/get-current-date-and-time-using-python/
-    query = select(Appointment).where(Appointment.start_at > datetime.datetime.now())
+    query = select(Appointment).where(Appointment.start_at >= datetime.datetime.now()).order_by(Appointment.start_at)
     all_appointments = session.exec(query).all()
     return all_appointments
 
