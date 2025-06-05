@@ -16,10 +16,6 @@ const Sidebar: React.FC = () => {
     data: appointments,
   } = useFetch<Appointments[]>("http://localhost:8000/appointment/");
 
-
-
-
-
   return (
     <div className="col-xl-2 px-sm-2 px-0 bg-dark min-vh-100">
       <div className="d-flex flex-column  align-items-sm-start px-3 pt-2 text-white ">
@@ -29,9 +25,7 @@ const Sidebar: React.FC = () => {
         {isPending && <div>Loading...</div>}
         {appointments && <AppointmentList appointments={appointments} />}
       </div>
-      <div>
         <AppointmentForm />
-      </div>
     </div>   
   );
 };
