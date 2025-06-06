@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { AddAppointment } from "./types";
-
+type onSuccessCallback = () => void;
 interface Props {
-  add_appointment: AddAppointment;
+  onSubmitSuccess: onSuccessCallback;
 }
 
-const AppointmentForm = () => {
+const AppointmentForm = ({onSubmitSuccess}:Props) => {
+  const [date, setDate] = useState("");
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -14,7 +15,15 @@ const AppointmentForm = () => {
     const newAppointmentDate = new Date(target.newAppointmentDate.value);
     console.log(newAppointmentDate);
     addAppointment(newAppointmentDate.toISOString());
+	//target.newAppointmentDate.value = ""
+	setDate("")
+	onSubmitSuccess()
   };
+
+  const handleInput = (e: React.SyntheticEvent) => {
+	const target = e.target as typeof e.target & { value: string };
+	setDate(target.value)
+  }
 
   const addAppointment = (date: string) => {
     let location: string;
@@ -53,7 +62,7 @@ const AppointmentForm = () => {
 
   return (
     <div className="container appointment-form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={ handleSubmit }>
         <input
           className="btn btn-success w-100 mb-2 "
           type="submit"
@@ -63,6 +72,8 @@ const AppointmentForm = () => {
           type="datetime-local"
           className="w-100"
           id="newAppointmentDate"
+		  onChange={ handleInput }
+		  value={date}
         />
       </form>
     </div>

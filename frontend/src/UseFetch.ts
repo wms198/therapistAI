@@ -6,12 +6,13 @@ interface FetchResult<T>{
 }
 
 
-const useFetch = <T>(url: string, run:boolean=true): FetchResult<T> => {
+const useFetch = <T>(url: string, run:boolean=true, cacheBuster:number=0): FetchResult<T> => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
   
   useEffect(() => {
+
     if(!run) return;
     const abortCont = new AbortController();
 
@@ -41,7 +42,7 @@ const useFetch = <T>(url: string, run:boolean=true): FetchResult<T> => {
 
     // abort the fetch
     return () => abortCont.abort();
-  }, [url, run])
+  }, [url, run, cacheBuster])
 
   return { data, isPending, error };
 }
