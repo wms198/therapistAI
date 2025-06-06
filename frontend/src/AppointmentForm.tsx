@@ -16,8 +16,8 @@ const AppointmentForm = ({onSubmitSuccess}:Props) => {
     console.log(newAppointmentDate);
     addAppointment(newAppointmentDate.toISOString());
 	//target.newAppointmentDate.value = ""
-	setDate("")
-	onSubmitSuccess()
+    setDate("")
+    onSubmitSuccess()
   };
 
   const handleInput = (e: React.SyntheticEvent) => {
@@ -64,7 +64,7 @@ const AppointmentForm = ({onSubmitSuccess}:Props) => {
     <div className="container appointment-form">
       <form onSubmit={ handleSubmit }>
         <input
-          className="btn btn-success w-100 mb-2 "
+          className="btn btn-outline-warning w-100 mb-2 "
           type="submit"
           value="Add Appointment"
         />
@@ -72,8 +72,8 @@ const AppointmentForm = ({onSubmitSuccess}:Props) => {
           type="datetime-local"
           className="w-100"
           id="newAppointmentDate"
-		  onChange={ handleInput }
-		  value={date}
+          onChange={ handleInput }
+          value={date}  
         />
       </form>
     </div>

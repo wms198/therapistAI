@@ -54,7 +54,7 @@ textarea {
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
-} 
+}
 
 .container {
   width: 60%;
@@ -80,7 +80,7 @@ label {
 
 .appointment-form form * {
   opacity: 0;
-  transition: opacity 0.5s;
+  transition: opacity 0.9s;
 }
 .appointment-form .btn,
 .appointment-form:focus-within form *,
@@ -88,10 +88,12 @@ label {
   opacity: 1;
 }
 
-.appoinments li {
-  animation: fadeIn 1.8s;
-}
 
+.renderResponse,
+.appointment-form .btn,
+.appoinments li {
+  animation: fadeIn 2.2s;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -101,4 +103,3 @@ label {
     opacity: 1;
   }
 }
-
