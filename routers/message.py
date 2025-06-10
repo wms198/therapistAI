@@ -9,12 +9,13 @@ router = APIRouter()
 
 class MessageRequest(BaseModel):
     content:str
+    user_id: int
 
 
 
 @router.post("/message/", tags=["message"])
 async def create_message(msg:MessageRequest, session: Session = Depends(get_session)):
-    user_m = Message(role="user", content=msg.content) 
+    user_m = Message(role="user", content=msg.content, user_id=msg.user_id) 
     session.add(user_m)
     session.commit()
     session.refresh(user_m)

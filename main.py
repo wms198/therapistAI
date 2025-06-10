@@ -5,7 +5,7 @@ from sqlmodel import SQLModel
 from db import engine
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import message, appointment
+from routers import message, appointment, user
 from db import engine
 
 @asynccontextmanager
@@ -32,4 +32,5 @@ app.add_middleware(
 
 app.include_router(message.router)
 app.include_router(appointment.router)
+app.include_router(user.router)
 

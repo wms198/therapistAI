@@ -13,3 +13,4 @@ class Message(SQLModel, table = True):
         nullable=False,
         server_default=text("CURRENT_TIMESTAMP"),
     ))
+    user_id: int | None = Field(default=None, foreign_key="user_id")
