@@ -17,8 +17,8 @@ const Sidebar: React.FC = () => {
     cacheBuster
   );
   return (
-    <div className="col-xl-2 px-sm-2 px-0 bg-dark min-vh-100 ">
-      <div className="d-flex flex-column  align-items-sm-start px-3 pt-2 text-white ">
+    <div className="col-2 px-sm-2 px-0 bg-dark min-vh-100 ">
+      <div className="px-3 pt-2 text-white ">
         <span className="fs-3 navbar">See YOU</span>
         {/* <button className="btn btn-primary my-2">Make an appointment</button> */}
         {error && <div>{error}</div>}
