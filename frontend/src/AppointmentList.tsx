@@ -11,7 +11,7 @@ const AppointmentList = ({ appointments }: Props) => {
         <li key={appointment.id}>
             <div className="d-flex justify-content-between">
                 <div>{new Date(appointment.start_at).toLocaleString()}</div>
-                 <div className="material-symbols-outlined" style={{fontSize: "20px"} }>delete</div>
+                 <div className="material-symbols-outlined" style={{ fontSize: "20px" }}>delete</div>
             </div>
         </li>
       ))}

@@ -1,4 +1,6 @@
+import { Image } from "react-bootstrap";
 import { Link } from "react-router";
+import googleIcon from "./assets/google-logo-icon.png";
 
 const Home: React.FC = () => {
 
@@ -10,11 +12,12 @@ const Home: React.FC = () => {
             </div>
             <div>
                 Please sign up with your google account.
+                    {/* https://stackoverflow.com/a/51533282 */}
                     <span><Link
                         to={
                             `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&scope=openid&response_type=code`
                         }>
-                            <img src="./google-logo-icon.png" alt="google icon" />
+                        <Image src={googleIcon} alt="google icon" className="image-logo-size"/>
                     </ Link></span>
             </div>
         </div>

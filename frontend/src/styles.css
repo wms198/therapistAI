@@ -61,6 +61,10 @@ label {
   display: inline-block;
 }
 
+.image-logo-size {
+  width: 20px;
+}
+
 .container {
   width: 60%;
   margin: auto;
