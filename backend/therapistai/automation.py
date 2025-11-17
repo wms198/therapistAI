@@ -1,8 +1,8 @@
 import datetime
 import asyncio
 from sqlmodel import select, Session
-from db.models import Appointment
-from db import engine
+from therapistai.db.models import Appointment
+from therapistai.db import engine
 
 
 def check_datetime():

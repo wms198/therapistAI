@@ -1,0 +1,14 @@
+services:
+  db: 
+    image: postgres:17.5
+    restart: always
+    environment:  
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-therapistai}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin123}
+    env_file:
+    - compose.env
+    ports:
+    # - "54321:5432"
+    - 54321:5432
+    

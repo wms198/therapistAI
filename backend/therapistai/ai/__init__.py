@@ -1,6 +1,7 @@
 import lmstudio as lms
-from db.models import Message
-SERVER_API_HOST = "192.168.1.245:1234"
+from therapistai.db.models import Message
+# SERVER_API_HOST = "192.168.1.245:1234" # locall inux machine
+SERVER_API_HOST = "127.0.0.1:1234"
 
 # This must be the *first* convenience API interaction (otherwise the SDK
 # implicitly creates a client that accesses the default server API host)

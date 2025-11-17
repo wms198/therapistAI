@@ -1,16 +1,21 @@
-import {Appointments} from "./types"
+import { Appointments } from "./types";
 
 interface Props {
-    appointments: Appointments[];
+  appointments: Appointments[];
 }
 
-const AppointmentList = ({appointments}: Props) => {
-    return(
-        <ul className="appoinments nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
-            {appointments.map((appointment) => (
-                <li key={appointment.id}>{appointment.start_at.replace("T", " ").replace("Z", "")}</li>
-            ))}
-        </ul>
-    );
+const AppointmentList = ({ appointments }: Props) => {
+  return (
+    <ul className="appoinments nav flex-column">
+      {appointments.map((appointment) => (
+        <li key={appointment.id}>
+            <div className="d-flex justify-content-between">
+                <div>{new Date(appointment.start_at).toLocaleString()}</div>
+                 <div className="material-symbols-outlined" style={{fontSize: "20px"} }>delete</div>
+            </div>
+        </li>
+      ))}
+    </ul>
+  );
 };
 export default AppointmentList;

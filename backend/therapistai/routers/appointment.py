@@ -1,7 +1,7 @@
 import datetime
 from fastapi import APIRouter, Depends, HTTPException
-from db.models import Appointment
-from db import get_session
+from therapistai.db.models import Appointment
+from therapistai.db import get_session
 from pydantic import BaseModel
 from sqlmodel import Session, select
 router = APIRouter()

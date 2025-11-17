@@ -1,21 +1,19 @@
-from fastapi import APIRouter, Depends
-from db.models import Message
-from db import get_session
-import ai
+from therapistai.db.models import Message
+from therapistai.db import get_session
+from therapistai import ai
 
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from sqlmodel import Session, select
 router = APIRouter()
 
 class MessageRequest(BaseModel):
-    content:str
+    content: str
     user_id: int
-
-
 
 @router.post("/message/", tags=["message"])
 async def create_message(msg:MessageRequest, session: Session = Depends(get_session)):
-    user_m = Message(role="user", content=msg.content, user_id=msg.user_id) 
+    user_m = Message(role="user", content=msg.content, user_id=msg.user_id)
     session.add(user_m)
     session.commit()
     session.refresh(user_m)
@@ -31,7 +29,7 @@ async def create_message(msg:MessageRequest, session: Session = Depends(get_sess
     return [user_m, ai_m]
 
 @router.get("/message/", tags=["message"])
-async def get_message(session: Session = Depends(get_session)):
+async def get_message(session: Session = Depends(get_session)): 
     query = select(Message)
     all_messages = session.exec(query).all()
     return all_messages

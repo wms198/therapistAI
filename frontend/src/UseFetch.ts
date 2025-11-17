@@ -12,7 +12,6 @@ const useFetch = <T>(url: string, run:boolean=true, cacheBuster:number=0): Fetch
   const [error, setError] = useState(null);
   
   useEffect(() => {
-
     if(!run) return;
     const abortCont = new AbortController();
 

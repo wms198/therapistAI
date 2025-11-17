@@ -1,5 +1,6 @@
 ### run backend code
-fastapi dev main.py
+a
+fastapi dev src/main.py
 
 ### run front end 
 npm start 

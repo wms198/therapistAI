@@ -1,12 +1,11 @@
 from contextlib import asynccontextmanager
 import asyncio
-from automation import check_loop
+from therapistai.automation import check_loop
 from sqlmodel import SQLModel
-from db import engine
+from therapistai.db import engine
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import message, appointment, user
-from db import engine
+from therapistai.routers import message, appointment, user
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

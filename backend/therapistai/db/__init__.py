@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from db.models import *
+from therapistai.db.models import *
 from sqlmodel import Session
 from contextlib import contextmanager
 
