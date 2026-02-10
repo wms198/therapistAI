@@ -43,4 +43,7 @@ npm install --save react-datetime
 https://js.devexpress.com/React/Documentation/Guide/UI_Components/Scheduler/Appointments/Add_Appointments/
 
 ### Appointment Management System using React
-https://www.geeksforgeeks.org/appointment-management-system-using-react/
+https://www.geeksforgeeks.org/appointment-management-system-using-react
+
+### Add JWT(Fastapi)
+[pyjwt](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#about-jwt)
