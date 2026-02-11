@@ -44,3 +44,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## New Way Fetch Date React
+
+Check out the [Artical on Medium](https://medium.com/@aumairasad/bye-bye-useeffect-how-to-fetch-api-data-like-a-pro-in-react-fce815ddb7fe).
