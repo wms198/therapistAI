@@ -47,3 +47,7 @@ https://www.geeksforgeeks.org/appointment-management-system-using-react
 
 ### Add JWT(Fastapi)
 [pyjwt](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#about-jwt)
+
+#### If you are planning on encoding or decoding tokens using certain digital signature algorithms (like RSA or ECDSA)s
+
+[Cryptographic Dependencies](https://pyjwt.readthedocs.io/en/latest/installation.html)
