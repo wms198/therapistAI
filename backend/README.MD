@@ -1,6 +1,6 @@
 ### run backend code
 a
-fastapi dev src/main.py
+uv run --env-file .env fastapi dev therapistai/main.py
 
 ### run front end 
 npm start 

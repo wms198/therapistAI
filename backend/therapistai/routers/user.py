@@ -2,10 +2,9 @@ from fastapi import APIRouter, Depends, Response, status
 from pydantic import BaseModel
 from sqlalchemy import exc, select
 from sqlmodel import Session
-
+from therapistai.auth import UNAUTHORIZED_EXP, get_password_hash, auth
 from therapistai.db import get_session
 from therapistai.db.models import User
-from therapistai.auth import get_password_hash
 
 router = APIRouter()
 
@@ -28,8 +27,7 @@ class UserUpdate(BaseModel):
 
 
 @router.post("/user/", tags=["user"], status_code=status.HTTP_201_CREATED)
-# @router.get("/", status_code=status.HTTP_201_CREATED)
-async def createUser(
+async def create_user(
     user_req: UserRequest, response: Response, session: Session = Depends(get_session)
 ):
     user = User(
@@ -50,26 +48,30 @@ async def createUser(
 
 
 @router.get("/user/", tags=["user"])
-# @router.get("/")
 async def getusers(session: Session = Depends(get_session)):
     stmt = select(User).order_by(User.id)
     return session.scalars(stmt).all()
 
+@router.get("/user/me", tags=["user"])
+async def me(user=Depends(auth)):
+    return user
 
 @router.get("/user/{id}", tags=["user"])
-async def getUser(id: str, session: Session = Depends(get_session)):
+async def getUser(id: int, session: Session = Depends(get_session)):
     user = session.get(User, id)
     return user
 
 
-@router.put("/user/{id}")
+@router.put("/user/{id_}")
 async def updateUser(
-    id: str,
+    id_: int,
     user_req: UserUpdate,
     response: Response,
     session: Session = Depends(get_session),
+    user=Depends(auth),
 ):
-    user = session.get(User, id)
+    if id_ != user.id:
+        raise UNAUTHORIZED_EXP
     for field_name in user_req.model_fields_set:
         if (value := getattr(user_req, field_name)) is not None:
             setattr(user, field_name, value)
