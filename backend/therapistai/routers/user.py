@@ -56,9 +56,9 @@ async def getusers(session: Session = Depends(get_session)):
 async def me(user=Depends(auth)):
     return user
 
-@router.get("/user/{id}", tags=["user"])
-async def getUser(id: int, session: Session = Depends(get_session)):
-    user = session.get(User, id)
+@router.get("/user/{id_}", tags=["user"])
+async def getUser(id_: int, session: Session = Depends(get_session)):
+    user = session.get(User, id_)
     return user
 
 
@@ -84,9 +84,9 @@ async def updateUser(
     return user
 
 
-@router.delete("/user/{id}")
-async def deleteUser(id: int, session: Session = Depends(get_session)):
-    user = session.get(User, id)
+@router.delete("/user/{id_}")
+async def deleteUser(id_: int, session: Session = Depends(get_session)):
+    user = session.get(User, id_)
     session.delete(user)
     session.commit()
     return {"message": "Item deleted successfully"}
