@@ -51,3 +51,10 @@ https://www.geeksforgeeks.org/appointment-management-system-using-react
 #### If you are planning on encoding or decoding tokens using certain digital signature algorithms (like RSA or ECDSA)s
 
 [Cryptographic Dependencies](https://pyjwt.readthedocs.io/en/latest/installation.html)
+
+### JWT claims
+https://datatracker.ietf.org/doc/html/rfc7519#section-4.1
+
+
+### Testing
+[pytest](https://docs.pytest.org/en/stable/getting-started.html)
