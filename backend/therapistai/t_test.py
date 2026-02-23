@@ -1,3 +1,4 @@
+import unittest
 from therapistai import t
 import pytest
 
@@ -23,3 +24,8 @@ def test_square(input_n, expected):
 class TestSquare:
     def test_sqare(self):
         assert t.square(3) == 9
+
+# Unit test
+class TestLegacy(unittest. TestCase):
+    def test(self):
+        self.assertEqual(t.square(3), 9)
