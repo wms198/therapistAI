@@ -18,3 +18,8 @@ def test_square(input_n, expected):
 
 # def test_square_float():
 #     assert t.square(3.) == 9.
+
+# Class based
+class TestSquare:
+    def test_sqare(self):
+        assert t.square(3) == 9
