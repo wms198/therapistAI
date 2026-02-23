@@ -58,3 +58,4 @@ https://datatracker.ietf.org/doc/html/rfc7519#section-4.1
 
 ### Testing
 [pytest](https://docs.pytest.org/en/stable/getting-started.html)
+[How to use unittest-based tests with pytest](https://pytest.org/en/latest/how-to/unittest.html)
