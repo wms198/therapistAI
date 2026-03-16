@@ -1038,6 +1038,19 @@ wheels = [
 ]
 
 [[package]]
+name = "pytest-sqlalchemy-mock"
+version = "0.1.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pytest" },
+    { name = "sqlalchemy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f7/bc/5e9dde88932fcd6f84ca2c9dbfcc5c5d24749c109e5d27f7fff43d7f00e1/pytest_sqlalchemy_mock-0.1.7.tar.gz", hash = "sha256:516637fcdaf7c88687ea21a8c1f3649da50da7e32f6743e10dbc13cb9fb5e46e", size = 4911, upload-time = "2024-08-10T21:09:20.591Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/80/be/1de595c8a9fb4307012c5ee26118f8d5fdb1004345443d232ebadabb7512/pytest_sqlalchemy_mock-0.1.7-py3-none-any.whl", hash = "sha256:1173d3149f21ce779aac10e2de0e8b7a8fe4b065ea4196463e2f88b75a6a0558", size = 5740, upload-time = "2024-08-10T21:09:19.328Z" },
+]
+
+[[package]]
 name = "python-dotenv"
 version = "1.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1336,6 +1349,7 @@ dependencies = [
     { name = "pwdlib", extra = ["argon2"] },
     { name = "pyjwt" },
     { name = "pytest" },
+    { name = "pytest-sqlalchemy-mock" },
     { name = "python-dotenv" },
     { name = "sqlalchemy" },
     { name = "sqlmodel" },
@@ -1356,6 +1370,7 @@ requires-dist = [
     { name = "pwdlib", extras = ["argon2"], specifier = ">=0.3.0" },
     { name = "pyjwt", specifier = ">=2.11.0" },
     { name = "pytest", specifier = ">=9.0.2" },
+    { name = "pytest-sqlalchemy-mock", specifier = ">=0.1.7" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "sqlalchemy", specifier = ">=2.0.41,<3.0.0" },
     { name = "sqlmodel", specifier = ">=0.0.24,<0.0.25" },
