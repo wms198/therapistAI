@@ -10,10 +10,12 @@ from therapistai.routers import message, appointment, user, token
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # https://sqlmodel.tiangolo.com/tutorial/create-db-and-table/#create-the-engine
+    print("creating tables")
     SQLModel.metadata.create_all(engine)
     print("db is connecting")
     asyncio.create_task(check_loop())
     yield
+    print("shutting down")
 
 # https://fastapi.tiangolo.com/advanced/events/
 app = FastAPI(lifespan=lifespan)
