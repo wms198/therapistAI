@@ -24,3 +24,20 @@ def test_create_user():
     assert data["emailProvider"] ==  "google"
     assert data["password"] !=  "1233"
     assert verify_password("1233", data["password"])
+
+def test_create_duplicate_user():
+    with TestClient(app) as ts:
+        resp = ts.post('/user/',
+            json={ 
+                "firstName": "Lili",
+                "lastName": "white",
+                "email": "foo@example.com",
+                "emailProvider": "google",
+                "password": "1233"
+            }
+        )
+
+    assert resp.status_code == 409
+    data = resp.json()
+
+    assert data["error"] ==  "User with the email already exists"
