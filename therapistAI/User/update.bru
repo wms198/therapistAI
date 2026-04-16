@@ -1,0 +1,19 @@
+meta {
+  name: update
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8000/user/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "firstName":"Lilian",
+    "lastName":"Blue",
+    "email": "steveoooomo@gmail.com"
+  }
+}

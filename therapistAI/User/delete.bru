@@ -1,0 +1,21 @@
+meta {
+  name: delete
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:8000/user/9
+  body: none
+  auth: inherit
+}
+
+body:json {
+  {
+    "firstName":"Lili",
+    "lastName":"Green",
+    "email":"lili@gmail.com",
+    "emailProvider":"google",
+    "password":"asdf"
+  }
+}

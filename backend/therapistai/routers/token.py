@@ -22,13 +22,13 @@ async def get_jwt_from_pw(
     stmt = select(User).filter(User.email == login_req.email)
     user: User | None = session.scalars(stmt).first()
     if user is not None and verify_password(login_req.password, user.password):
-        access_token = create_access_token(
+        access_token, expires_at = create_access_token(
             user_id=user.id,
             expire_delta=timedelta(hours=12),
             first_name=user.firstName,
             aud="api",
         )
-        refresh_token = create_access_token(
+        refresh_token, _ = create_access_token(
             user_id=user.id,
             expire_delta=timedelta(days=7),
             aud="refresh"
@@ -36,6 +36,7 @@ async def get_jwt_from_pw(
         return {
             'access_token': access_token,
             'refresh_token': refresh_token,
+            'access_token_expries_at': expires_at
         }
 
     response.status_code = status.HTTP_422_UNPROCESSABLE_ENTITY

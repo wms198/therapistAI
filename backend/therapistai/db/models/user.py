@@ -15,4 +15,4 @@ class User(SQLModel, table=True):
     lastName: str
     email: str = AField(unique=True, index=True)
     emailProvider: str
-    password: str
+    password: str = Field(exclude=True)

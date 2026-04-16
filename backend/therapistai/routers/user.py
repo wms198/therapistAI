@@ -48,7 +48,7 @@ async def create_user(
 
 
 @router.get("/user/", tags=["user"])
-async def getusers(session: Session = Depends(get_session)):
+async def get_users(session: Session = Depends(get_session)):
     stmt = select(User).order_by(User.id)
     return session.scalars(stmt).all()
 
@@ -57,13 +57,13 @@ async def me(user=Depends(auth)):
     return user
 
 @router.get("/user/{id_}", tags=["user"])
-async def getUser(id_: int, session: Session = Depends(get_session)):
+async def get_user(id_: int, session: Session = Depends(get_session)):
     user = session.get(User, id_)
     return user
 
 
 @router.put("/user/{id_}")
-async def updateUser(
+async def update_user(
     id_: int,
     user_req: UserUpdate,
     response: Response,
@@ -79,13 +79,20 @@ async def updateUser(
         session.commit()
     except exc.IntegrityError:
         response.status_code = status.HTTP_409_CONFLICT
-        return {"error": "User with the email already exists"}
+        return {"error": "User with the email already exists"} # why
     session.refresh(user)
     return user
 
 
 @router.delete("/user/{id_}")
-async def deleteUser(id_: int, session: Session = Depends(get_session)):
+async def delete_user(
+    id_: int,
+    session: Session = Depends(get_session),
+    user=Depends(auth),
+):
+    if id_ != user.id:
+        raise UNAUTHORIZED_EXP
+
     user = session.get(User, id_)
     session.delete(user)
     session.commit()

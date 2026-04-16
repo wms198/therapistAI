@@ -34,12 +34,14 @@ def create_access_token(
     expire_delta: timedelta,
     **claims,
 ):
+    expires_at = datetime.now(tz=timezone.utc) + expire_delta
     encode = {
         "sub": str(user_id),
-        "exp": datetime.now(tz=timezone.utc) + expire_delta,
+        "exp": expires_at,
         **claims,
     }
-    return jwt.encode(encode, JWT_SECRET, algorithm=ALGORITHM)
+    # https://pyjwt.readthedocs.io/en/stable/
+    return jwt.encode(encode, JWT_SECRET, algorithm=ALGORITHM), expires_at
 
 
 def decode(token: str, audience: str) -> dict:
