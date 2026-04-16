@@ -15,7 +15,7 @@ def test_get_password_hash():
 def test_create_access_token():
     user_id = 123
     expire_delta = timedelta(minutes=30) 
-    token = auth.create_access_token(user_id, expire_delta)
+    token, _ = auth.create_access_token(user_id, expire_delta)
     print(token)
     # https://pyjwt.readthedocs.io/en/stable/usage.html#encoding-decoding-tokens-with-hs256
     decode = jwt.decode(token, JWT_SECRET_MOCK, ALGORITHM)
@@ -26,8 +26,10 @@ def test_create_access_token():
 def test_decode():
     audience = "mobile_app"
     user_id = "1"
-    token = auth.create_access_token(user_id, timedelta(seconds=10), aud=audience)
+    token, _ = auth.create_access_token(user_id, timedelta(seconds=10), aud=audience)
     decode = auth.decode(token, audience)
 
     assert decode['aud'] == audience
     assert decode['sub'] == user_id
+
+    
