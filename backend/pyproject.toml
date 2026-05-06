@@ -38,3 +38,5 @@ extend-immutable-calls = [
     "fastapi.Depends",
     "fastapi.params.Depends"
 ]
+[tool.vercel]
+entrypoint = "therapistai.main:app"
