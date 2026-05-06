@@ -1,12 +1,11 @@
 import React from "react";
 
 import { Routes, Route } from "react-router";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-import Sidebar from "./Sidebar";
-import Dashboard from "./Dashboard";
-import Home from "./Home";
-import SignUp from "./SignUp";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./components/Dashboard";
+import Home from "./components/Home";
+import SignUp from "./components/SignUp";
 
 const App: React.FC = () => {
   return (
