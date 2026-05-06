@@ -40,3 +40,6 @@ extend-immutable-calls = [
 ]
 [tool.vercel]
 entrypoint = "therapistai.main:app"
+
+[project.scripts]
+app = "therapistai.main:app"
