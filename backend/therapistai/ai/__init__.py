@@ -1,11 +1,12 @@
+import os
 import lmstudio as lms
 from therapistai.db.models import Message
 # SERVER_API_HOST = "192.168.1.245:1234" # locall inux machine
-SERVER_API_HOST = "127.0.0.1:1234"
+LMS_API_HOST = os.getenv('LMS_API_HOST', "127.0.0.1:1234")
 
 # This must be the *first* convenience API interaction (otherwise the SDK
 # implicitly creates a client that accesses the default server API host)
-lms.configure_default_client(SERVER_API_HOST)
+lms.configure_default_client(LMS_API_HOST)
 model = lms.llm("lmstudio-community/gemma-3-1B-it-qat-GGUF")
 
 SYSTEM_PROMP = """You are a personal therapist.
