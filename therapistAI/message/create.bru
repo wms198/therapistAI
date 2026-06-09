@@ -7,7 +7,11 @@ meta {
 post {
   url: http://localhost:8000/message/
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3IiwiZXhwIjoxNzc5NDQxMTM0LCJmaXJzdF9uYW1lIjoiTGlsaWFuIiwiYXVkIjoiYXBpIn0.xTkQQrJxBD1SdNrvbJm7bYJwx8TVb4okfRl0BM4ZNsM
 }
 
 body:json {
