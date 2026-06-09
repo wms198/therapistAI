@@ -17,6 +17,9 @@ dependencies = [
     "python-dotenv>=1.2.1",
     "pytest>=9.0.2",
     "pytest-sqlalchemy-mock>=0.1.7",
+    "python-multipart>=0.0.22",
+    "python-socketio>=5.16.2",
+    "uvicorn>=0.41.0",
 ]
 
 [build-system]
