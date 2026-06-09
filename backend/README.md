@@ -1,9 +1,11 @@
 ### run backend code
 a
 uv run --env-file .env fastapi dev therapistai/main.py
+uv run --env-file .env uvicorn --reload main:app
 
 ### run front end 
-npm start 
+nvm use 22
+npm run dev
 
 ### LLM
 Using llama
