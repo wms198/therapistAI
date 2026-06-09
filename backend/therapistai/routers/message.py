@@ -10,21 +10,20 @@ router = APIRouter()
 
 class MessageRequest(BaseModel):
     content: str
-    user_id: int
 
 
 
 @router.post("/message/", tags=["message"])
 async def create_message(msg: MessageRequest, session: Session = Depends(get_session), user = Depends(auth)):
-    user_m = Message(role="user", content=msg.content, user_id=msg.user_id)
+    user_m = Message(role="user", content=msg.content, user_id=user.id)
     session.add(user_m)
     session.commit()
     session.refresh(user_m)
     
-    query = select(Message).where(Message.role == 'user')
+    query = select(Message).where(Message.role == 'user', Message.user_id == user.id)
     all_messages = session.exec(query).all()
     prediction = ai.chat(all_messages)
-    ai_m = Message(role='llm', content=prediction.content)
+    ai_m = Message(role='llm', content=prediction.content, user_id=user.id)
     session.add(ai_m)
     session.commit()
     session.refresh(user_m)
