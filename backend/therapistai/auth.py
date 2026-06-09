@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
 import jwt
-from fastapi import Depends, Header, HTTPException, status
+from fastapi import Depends, Header, HTTPException, status, Cookie
 from pwdlib import PasswordHash
 from pydantic import BaseModel
 from therapistai.db import Session, get_session
@@ -56,13 +56,18 @@ def decode(token: str, audience: str) -> dict:
 
 async def auth(
     authorization: Annotated[str | None, Header()] = None,
+    access_token: Annotated[str | None, Cookie()] = None,
     session: Session = Depends(get_session),
 ):
-    if authorization is None:
+    if authorization:
+        type_, middle, token   = authorization.partition(' ')
+        if type_ != "Bearer" or middle != " ":
+            raise UNAUTHORIZED_EXP
+    elif access_token:
+        token = access_token
+    else:
         raise UNAUTHORIZED_EXP
-    type_, middle, token   = authorization.partition(' ')
-    if type_ != "Bearer" or middle != " ":
-        raise UNAUTHORIZED_EXP
+
     try:
         claims = decode(token, "api")
     except jwt.DecodeError:
