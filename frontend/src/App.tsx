@@ -3,8 +3,8 @@ import React from "react";
 import { Routes, Route } from "react-router";
 
 import Sidebar from "./components/Sidebar";
-import Dashboard from "./components/Dashboard";
-import Home from "./components/Home";
+import Dashboard from "./page/Dashboard";
+import Home from "./page/Home";
 import SignUp from "./components/SignUp";
 
 const App: React.FC = () => {

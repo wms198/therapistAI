@@ -1,0 +1,11 @@
+import socketio
+
+sio = socketio.AsyncServer(cors_allowed_origins="*", async_mode="asgi")
+def sio_dep() -> socketio.AsyncServer:
+    return sio
+# https://github.com/miguelgrinberg/python-socketio/blob/main/examples/server/asgi/fastapi-fiddle.py
+# https://github.com/BimaAdi/fastapi-with-python-socketio-example/blob/main/main.py
+# sio = socketio.AsyncServer(
+#     async_mode="asgi",
+#     cors_allowed_origins="*"
+# )

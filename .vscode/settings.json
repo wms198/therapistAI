@@ -6,5 +6,9 @@
             "envManager": "ms-python.python:venv",
             "packageManager": "ms-python.python:pip"
         }
-    ]
+    ],
+    // https://stackoverflow.com/a/79513027
+    "files.associations": {
+        "*.css": "tailwindcss"
+    },
 }

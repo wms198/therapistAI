@@ -48,3 +48,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## New Way Fetch Date React
 
 Check out the [Artical on Medium](https://medium.com/@aumairasad/bye-bye-useeffect-how-to-fetch-api-data-like-a-pro-in-react-fce815ddb7fe).
+
+### npm i tailwind-variants

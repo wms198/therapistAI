@@ -3,13 +3,13 @@ import asyncio
 from therapistai.automation import check_loop
 from sqlmodel import SQLModel
 from therapistai.db import engine
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from therapistai.routers import message, appointment, user, token
+from therapistai.auth import auth
+from therapistai.db import get_session
 import socketio
 
-# https://github.com/miguelgrinberg/python-socketio/blob/main/examples/server/asgi/fastapi-fiddle.py
-# https://github.com/BimaAdi/fastapi-with-python-socketio-example/blob/main/main.py
 sio = socketio.AsyncServer(
     async_mode="asgi",
     cors_allowed_origins="*"
@@ -19,9 +19,19 @@ def ping(sid, data):
     print('did a ping!')
     print('ping', sid, data)
 
-@sio.on('messager')
-def userMessage(sid, data):
-    pass
+@sio.event
+async def userContent(sid, data):
+    with next(get_session()) as session:
+        user = await auth(access_token=data['access_token'], session=session)
+        response = await message.create_message(
+            session = session,
+            user = user,
+            message_content = data['userContent'],
+        )
+    print(f"response received: {response}")
+
+
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
